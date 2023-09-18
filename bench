@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[! type hyperfine>/dev/null 2>&1 ]]; then
+  echo "hyperfine required to run benchmark"
+  exit 1
+fi
+
+hyperfine --warmup=3 "./time-x twitter.com" "./time-x x.com"
